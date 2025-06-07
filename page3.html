@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <title>Тест по HTML</title>
+    <style>
+        /* Универсальный стиль для теста */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f0f2f5;
+            color: #333;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column; /* Изменено для корректного размещения пагинации */
+            justify-content: flex-start;
+            align-items: center; /* Центрируем содержимое */
+            padding: 40px 20px;
+        }
+        .container {
+            max-width: 700px;
+            background: #fff;
+            padding: 30px 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgb(0 0 0 / 0.1);
+            margin-bottom: 30px; /* Отступ снизу, чтобы кнопки не прилипали */
+            width: 100%; /* Добавляем, чтобы контейнер занимал всю доступную ширину до max-width */
+        }
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #222;
+            text-align: center;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+        .question {
+            font-weight: 600;
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+        .question img { /* Стиль для изображений в вопросах */
+            max-width: 100%;
+            height: auto;
+            margin-top: 15px;
+            border-radius: 5px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .answers label {
+            display: block;
+            margin-bottom: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: color 0.3s ease;
+        }
+        .answers input[type="radio"] {
+            margin-right: 10px;
+            cursor: pointer;
+        }
+        .answers label:hover {
+            color: #0066ff;
+        }
+        button {
+            align-self: center;
+            background-color: #0066ff;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #004bbd;
+        }
+        #result {
+            margin-top: 30px;
+            font-size: 1.3rem;
+            font-weight: 700;
+            text-align: center;
+            color: #0066ff;
+        }
+        /* Стили для пагинации */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            gap: 10px; /* Расстояние между кнопками */
+            margin-top: 30px; /* Отступ сверху от контейнера теста */
+            padding-bottom: 40px; /* Добавляем отступ снизу страницы, чтобы было красиво */
+        }
+        .pagination .page-number {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 40px; /* Минимальная ширина для кнопки */
+            height: 40px; /* Высота кнопки */
+            padding: 0 15px; /* Отступы по бокам */
+            background-color: #e0e0e0;
+            color: #555;
+            text-decoration: none;
+            border-radius: 8px; /* Скругленные углы */
+            font-weight: 600;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Легкая тень */
+        }
+        .pagination .page-number:hover {
+            background-color: #d0d0d0;
+            color: #333;
+        }
+        .pagination .page-number.active {
+            background-color: #0066ff;
+            color: white;
+            box-shadow: 0 4px 8px rgba(0,102,255,0.3); /* Более выраженная тень для активной кнопки */
+        }
+
+        /* Адаптив */
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px 15px;
+            }
+            h1 {
+                font-size: 2rem;
+            }
+            .pagination {
+                flex-wrap: wrap; /* Позволяем кнопкам переноситься на новую строку */
+                justify-content: center;
+                padding-bottom: 20px;
+            }
+            .pagination .page-number {
+                width: 35px;
+                height: 35px;
+                padding: 0 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Тест по HTML</h1>
+        <form id="quiz-form">
+            <div class="question">
+                1. Какой тег используется для создания гиперссылки?
+                </div>
+            <img src="https://developer.mozilla.org/ru/docs/Learn_web_development/Core/Structuring_content/Creating_links/navigation-example.png" alt="Пример гиперссылки" />
+            <div class="answers">
+                <label><input type="radio" name="q1" value="wrong" required> a) &lt;link&gt;</label>
+                <label><input type="radio" name="q1" value="right"> b) &lt;a&gt;</label>
+                <label><input type="radio" name="q1" value="wrong"> c) &lt;href&gt;</label>
+                <label><input type="radio" name="q1" value="wrong"> d) &lt;url&gt;</label>
+            </div>
+
+            <div class="question">
+                2. Какой атрибут тега &lt;img&gt; указывает альтернативный текст для изображения?
+            </div>
+            <div class="answers">
+                <label><input type="radio" name="q2" value="wrong" required> a) src</label>
+                <label><input type="radio" name="q2" value="right"> b) alt</label>
+                <label><input type="radio" name="q2" value="wrong"> c) title</label>
+                <label><input type="radio" name="q2" value="wrong"> d) description</label>
+            </div>
+
+            <div class="question">
+                3. Какой тег использован для создания таблицы, показанной на изображении?
+                </div>
+            <img src="https://doka.guide/html/tables/images/covers/desktop.svg" alt="Пример таблицы" />
+            <div class="answers">
+                <label><input type="radio" name="q3" value="right" required> a) &lt;table&gt;</label>
+                <label><input type="radio" name="q3" value="wrong"> b) &lt;grid&gt;</label>
+                <label><input type="radio" name="q3" value="wrong"> c) &lt;tab&gt;</label>
+                <label><input type="radio" name="q3" value="wrong"> d) &lt;tr&gt;</label>
+            </div>
+
+            <div class="question">
+                4. Какой тег определяет заголовок самого высокого уровня?
+            </div>
+            <div class="answers">
+                <label><input type="radio" name="q4" value="wrong" required> a) &lt;head&gt;</label>
+                <label><input type="radio" name="q4" value="right"> b) &lt;h1&gt;</label>
+                <label><input type="radio" name="q4" value="wrong"> c) &lt;header&gt;</label>
+                <label><input type="radio" name="q4" value="wrong"> d) &lt;title&gt;</label>
+            </div>
+
+            <div class="question">
+                5. Какой элемент формы показан на изображении?
+                </div>
+            <img src="https://img.uxcel.com/practices/input-1583504928440/a-1696953805012-2x.jpg" alt="Пример элемента формы" />
+            <div class="answers">
+                <label><input type="radio" name="q5" value="right" required> a) &lt;input type="text"&gt;</label>
+                <label><input type="radio" name="q5" value="wrong"> b) &lt;input type="radio"&gt;</label>
+                <label><input type="radio" name="q5" value="wrong"> c) &lt;input type="submit"&gt;</label>
+                <label><input type="radio" name="q5" value="wrong"> d) &lt;input type="checkbox"&gt;</label>
+            </div>
+
+            <div class="question">
+                6. Какой тег используется для создания ненумерованного списка?
+            </div>
+            <div class="answers">
+                <label><input type="radio" name="q6" value="wrong" required> a) &lt;ol&gt;</label>
+                <label><input type="radio" name="q6" value="right"> b) &lt;ul&gt;</label>
+                <label><input type="radio" name="q6" value="wrong"> c) &lt;li&gt;</label>
+                <label><input type="radio" name="q6" value="wrong"> d) &lt;list&gt;</label>
+            </div>
+
+            <div class="question">
+                7. Какой тег применён для текста, выделенного жирным шрифтом на изображении?
+                </div>
+            <img src="../media/q7.png" alt="Пример текста с жирным шрифтом" />
+            <div class="answers">
+                <label><input type="radio" name="q7" value="right" required> a) &lt;strong&gt;</label>
+                <label><input type="radio" name="q7" value="wrong"> b) &lt;italic&gt;</label>
+                <label><input type="radio" name="q7" value="wrong"> c) &lt;bold&gt;</label>
+                <label><input type="radio" name="q7" value="wrong"> d) &lt;em&gt;</label>
+            </div>
+
+            <div class="question">
+                8. Какой атрибут тега &lt;a&gt; задаёт адрес ссылки?
+            </div>
+            <div class="answers">
+                <label><input type="radio" name="q8" value="wrong" required> a) url</label>
+                <label><input type="radio" name="q8" value="wrong"> b) src</label>
+                <label><input type="radio" name="q8" value="right"> c) href</label>
+                <label><input type="radio" name="q8" value="wrong"> d) link</label>
+            </div>
+
+            <div class="question">
+                9. Какой тег использован для создания кнопки, показанной на изображении?
+                </div>
+            <img src="https://ru.w3docs.com/uploads/media/default/0001/02/f77c33a34ee1cd2a9ccd3740c98759f095296c71.png" alt="Пример кнопки" />
+            <div class="answers">
+                <label><input type="radio" name="q9" value="right" required> a) &lt;button&gt;</label>
+                <label><input type="radio" name="q9" value="wrong"> b) &lt;input type="button"&gt;</label>
+                <label><input type="radio" name="q9" value="wrong"> c) &lt;submit&gt;</label>
+                <label><input type="radio" name="q9" value="wrong"> d) &lt;click&gt;</label>
+            </div>
+
+            <div class="question">
+                10. Какой тег определяет метаданные веб-страницы?
+            </div>
+            <div class="answers">
+                <label><input type="radio" name="q10" value="wrong" required> a) &lt;body&gt;</label>
+                <label><input type="radio" name="q10" value="right"> b) &lt;meta&gt;</label>
+                <label><input type="radio" name="q10" value="wrong"> c) &lt;html&gt;</label>
+                <label><input type="radio" name="q10" value="wrong"> d) &lt;data&gt;</label>
+            </div>
+
+            <button type="submit">Проверить результаты</button>
+        </form>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        const form = document.getElementById('quiz-form');
+        const resultDiv = document.getElementById('result');
+
+        form.addEventListener('submit', function(event) {
+            event.preventDefault(); // Предотвращаем стандартную отправку формы
+
+            let score = 0;
+            const totalQuestions = 10; // Теперь у нас 10 вопросов
+
+            // Перебираем вопросы и считаем правильные ответы
+            for(let i = 1; i <= totalQuestions; i++) {
+                const selectedAnswer = document.querySelector(`input[name="q${i}"]:checked`);
+                if(selectedAnswer && selectedAnswer.value === 'right') {
+                    score++;
+                }
+            }
+
+            // Определяем сообщение в зависимости от набранных баллов
+            let message = '';
+            if (score >= 9) {
+                message = `Отлично! Вы хорошо знаете основы HTML. Правильных ответов: ${score} из ${totalQuestions}.`;
+            } else if (score >= 7) {
+                message = `Хорошо, но есть что повторить. Правильных ответов: ${score} из ${totalQuestions}.`;
+            } else if (score >= 5) {
+                message = `Удовлетворительно, стоит изучить материал глубже. Правильных ответов: ${score} из ${totalQuestions}.`;
+            } else {
+                message = `Необходимо повторить основы HTML. Правильных ответов: ${score} из ${totalQuestions}.`;
+            }
+
+            resultDiv.textContent = message;
+
+            // Прокрутка к результату
+            resultDiv.scrollIntoView({behavior: "smooth", block: "center"});
+        });
+    </script>
+
+    <div class="pagination">
+        <a href="../HTSS.html" class="page-number">1</a>
+        <a href="../page2/page2.html" class="page-number">2</a>
+        <a href="page3.html" class="page-number active">3</a>
+    </div>
+</body>
+</html>
